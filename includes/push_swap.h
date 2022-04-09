@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:04:29 by gbertin           #+#    #+#             */
-/*   Updated: 2021/12/24 14:22:52 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/01/30 22:46:20 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,17 @@ elem_list	*ft_islast(elem_list *lst);
 void		ft_addstart(t_list *liste, int nvNombre, char pile);
 void		ft_addend(t_list *liste, int nvNombre, char pile);
 
-t_list		*ft_fill_lst(char **split);
-t_list		*ft_fill_lst2(char **argv);
+t_list		*ft_fill_lst(int argc, char **argv);
+t_list		*ft_fill_by_split(char **split);
+t_list		*ft_fill(char **argv);
+
+t_list		*ft_sort(t_list *liste);
+int			ft_is_sorted(t_list *liste);
+int			ft_count_size(elem_list *elem);
+
+t_list		*ft_little_sort(t_list *liste);
+t_list		*ft_sort_five(t_list *liste);
+t_list		*ft_sort_three(t_list *liste);
 
 void		ft_swap_a(t_list *liste);
 void		ft_swap_b(t_list *liste);

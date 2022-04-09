@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 16:43:42 by gbertin           #+#    #+#             */
-/*   Updated: 2021/12/23 17:35:10 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/01/30 13:03:07 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_printlst(t_list *liste)
 	if (liste)
 	{
 		lst = liste->firstA;
-		printf("liste A : ");
+		printf("\nliste A : ");
 		while (lst)
 		{
 			printf("%d ", lst->nombre);

@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 17:42:49 by gbertin           #+#    #+#             */
-/*   Updated: 2021/12/24 14:25:37 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/01/30 11:26:59 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		ft_checkargv(char *argv)
 	return (1);
 }
 
-t_list  *ft_fill_lst(char **split)
+t_list  *ft_fill_by_split(char **split)
 {
 	t_list  *liste;
 	int		i;
@@ -67,13 +67,16 @@ t_list  *ft_fill_lst(char **split)
 	return (liste);	
 }
 
-t_list	*ft_fill_lst2(char **argv)
+t_list	*ft_fill(char **argv)
 {
 	t_list	*liste;
 	int		i;
 	
 	i = 1;
-	liste = ft_initlst(ft_atoi(argv[i]));
+	if (ft_checkargv(argv[i]))
+		liste = ft_initlst(ft_atoi(argv[i])); // retouner un message d'erreur
+	else 
+		return (0);
 	i++;
 	while (argv[i])
 	{
@@ -85,6 +88,25 @@ t_list	*ft_fill_lst2(char **argv)
 			return (NULL);
 		}
 		i++;
+	}
+	return (liste);
+}
+
+t_list	*ft_fill_lst(int argc, char **argv)
+{
+	t_list *liste;
+	
+	if (argc == 2)
+	{
+		liste = ft_fill_by_split(ft_split(argv[1], ' '));
+		if (liste == NULL)
+			return (0);
+	}
+	else 
+	{
+		liste = ft_fill(argv);
+		if (liste == NULL)
+			return (0);
 	}
 	return (liste);
 }

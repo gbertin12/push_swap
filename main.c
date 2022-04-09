@@ -6,30 +6,33 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:23:17 by gbertin           #+#    #+#             */
-/*   Updated: 2021/12/24 14:27:33 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/01/30 22:55:02 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
+// verifier si il y a plus d'un nombre
 int main(int argc, char **argv)
 {
 	t_list *liste;
 	
 	if (argc < 2)
 		return (0);
-	if (argc == 2)
+	liste = ft_fill_lst(argc, argv);
+	if (liste == NULL)
 	{
-		liste = ft_fill_lst(ft_split(argv[1], ' '));
-		if (liste == NULL)
-			return (0);
+		// check leaks
+		return (0);
 	}
-	else 
+	if (ft_count_size(liste->firstA) <= 5)
 	{
-		liste = ft_fill_lst2(argv);
-		if (liste == NULL)
-			return (0);
+		ft_little_sort(liste);
 	}
+		
+	else
+		liste = ft_sort(liste);
+	//free
 	ft_printlst(liste);
 	return (0);
 }
