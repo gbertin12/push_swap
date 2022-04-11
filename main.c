@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:23:17 by gbertin           #+#    #+#             */
-/*   Updated: 2022/01/30 22:55:02 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/04/11 12:06:28 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	if (ft_count_size(liste->firstA) <= 5)
-	{
-		ft_little_sort(liste);
-	}
-		
+		ft_little_sort(liste); 
 	else
 		liste = ft_sort(liste);
 	//free
