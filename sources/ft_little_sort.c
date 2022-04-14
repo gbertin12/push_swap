@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:48:40 by gbertin           #+#    #+#             */
-/*   Updated: 2022/01/31 18:01:47 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/04/14 15:26:13 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_list	*ft_little_sort(t_list *liste)
 	return (liste);
 }
 
+// manque 3, 2, 1 et 2, 1, 3
 t_list	*ft_sort_three(t_list *liste)
 {
 	elem_list *first;
@@ -38,18 +39,19 @@ t_list	*ft_sort_three(t_list *liste)
 	first = liste->firstA;
 	middle = first->next;
 	last = middle->next;
-	if ((first->nombre > middle->nombre && first->nombre > last->nombre) 
-		&& middle->nombre < last->nombre)
+	if (ft_is_max(first->nombre, first) && ft_is_min(middle->nombre, first)) // 3, 1, 2
 		ft_rotate_a(liste);
-	if ((middle->nombre > first->nombre && middle->nombre > last->nombre) 
-		&& first->nombre > last->nombre)
+	if (ft_is_max(middle->nombre, first) && ft_is_min(last->nombre, first)) // 2, 3, 1
 		ft_rotate_reverse_a(liste);
-	if ((middle->nombre > first->nombre && middle->nombre > last->nombre) 
-		&& first->nombre < last->nombre)
+	if (ft_is_max(middle->nombre, first) && ft_is_min(first->nombre, first)) // 1, 3, 2
 	{
 		ft_push_b(liste);
 		ft_rotate_a(liste);
 		ft_push_a(liste);
+	}
+	if (ft_is_max(first->nombre, first) && ft_is_min(last->nombre, first)) //3, 2, 1
+	{
+		ft_s
 	}
 	return (liste);
 }

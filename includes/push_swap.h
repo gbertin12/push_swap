@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:04:29 by gbertin           #+#    #+#             */
-/*   Updated: 2022/01/30 22:46:20 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/04/14 15:18:52 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ t_list		*ft_fill(char **argv);
 t_list		*ft_sort(t_list *liste);
 int			ft_is_sorted(t_list *liste);
 int			ft_count_size(elem_list *elem);
+int			ft_is_max(int value, elem_list *liste);
+int			ft_is_min(int value, elem_list *liste);
+
 
 t_list		*ft_little_sort(t_list *liste);
 t_list		*ft_sort_five(t_list *liste);
