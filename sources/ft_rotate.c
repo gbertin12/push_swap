@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 11:16:27 by gbertin           #+#    #+#             */
-/*   Updated: 2021/12/24 14:14:34 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/06/04 12:41:49 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_rotate_a(t_list *liste)
 		elem_lastA->next = elem_firstA;
 		elem_firstA->next = NULL;
 	}
+	ft_putstr_fd("ra\n", 1);
 }
 
 void	ft_rotate_b(t_list *liste)
@@ -40,6 +41,7 @@ void	ft_rotate_b(t_list *liste)
 		elem_lastB->next = elem_firstB;
 		elem_firstB->next = NULL;
 	}
+	ft_putstr_fd("rb\n", 1);
 }
 
 void	ft_rotate_ab(t_list *liste)

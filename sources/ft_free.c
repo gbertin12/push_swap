@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_search.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/14 15:09:45 by gbertin           #+#    #+#             */
-/*   Updated: 2022/06/04 12:13:15 by gbertin          ###   ########.fr       */
+/*   Created: 2022/06/04 12:01:04 by gbertin           #+#    #+#             */
+/*   Updated: 2022/06/04 12:44:31 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int ft_is_max(int value, elem_list *liste)
+void    ft_free_struct(t_list *liste)
 {
-    while (liste)
-    {
-        if (liste->nombre > value)
-            return (0);
-        liste = liste->next;
-    }
-    return (1);
-}
+    elem_list   *temp;
+    elem_list   *v;
 
-int ft_is_min(int value, elem_list *liste)
-{
-    while (liste)
+    v = ft_memset(&v, 0, sizeof(elem_list));
+    temp = liste->firstA;
+    while (temp)
     {
-        if (liste->nombre < value)
-            return (0);
-        liste = liste->next;
+        v = temp;
+        printf("v : %d\n temp : %d \n", v->nombre, temp->nombre);
+        free(v);
+        temp = temp->next;
     }
-    return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 01:04:58 by gbertin           #+#    #+#             */
-/*   Updated: 2022/01/30 13:10:00 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/06/04 12:40:58 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_list	*ft_sort(t_list *liste)
 			else
 				ft_push_b(liste);
 			y++;
-			ft_printlst(liste);
 		}
 		while (liste->firstB)
 			ft_push_a(liste);

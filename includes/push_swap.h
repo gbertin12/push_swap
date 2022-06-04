@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:04:29 by gbertin           #+#    #+#             */
-/*   Updated: 2022/04/14 15:18:52 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/06/04 12:16:09 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,6 @@ void		ft_rotate_ab(t_list *liste);
 void		ft_rotate_reverse_a(t_list *liste);
 void		ft_rotate_reverse_b(t_list *liste);
 void		ft_rotate_reverse_ab(t_list *liste);
+
+void		ft_free_struct(t_list *liste);
 #endif

@@ -6,7 +6,7 @@
 #    By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/04 10:51:34 by gbertin           #+#    #+#              #
-#    Updated: 2022/06/04 11:43:13 by gbertin          ###   ########.fr        #
+#    Updated: 2022/06/04 12:14:30 by gbertin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS = 	push_swap.c \
 		sources/ft_rotate.c \
 		sources/ft_search.c \
 		sources/ft_sort.c \
+		sources/ft_free.c \
 		sources/ft_swap.c
 
 HEAD = includes/push_swap.h
@@ -39,7 +40,7 @@ all: $(NAME)
 
 $(NAME):$(OBJ)
 			$(MAKE) -C $(LIBFT_PATH)
-			$(CC) $(FLAGS) -o $(NAME) $(OBJ) -lm /libft/libft.a
+			$(CC) $(FLAGS) -o $(NAME) $(OBJ) -lm libft/libft.a
 
 clean: 
 			$(MAKE) clean -C $(LIBFT_PATH)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:23:17 by gbertin           #+#    #+#             */
-/*   Updated: 2022/04/11 12:06:28 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/06/04 12:24:00 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int main(int argc, char **argv)
 		ft_little_sort(liste); 
 	else
 		liste = ft_sort(liste);
-	//free
-	ft_printlst(liste);
+	ft_free_struct(liste);
 	return (0);
 }

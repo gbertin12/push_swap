@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:48:40 by gbertin           #+#    #+#             */
-/*   Updated: 2022/04/14 15:26:13 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/06/04 12:12:51 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ t_list	*ft_sort_three(t_list *liste)
 	}
 	if (ft_is_max(first->nombre, first) && ft_is_min(last->nombre, first)) //3, 2, 1
 	{
-		ft_s
+		ft_swap_a(liste);
+		ft_rotate_a(liste);
 	}
 	return (liste);
 }
