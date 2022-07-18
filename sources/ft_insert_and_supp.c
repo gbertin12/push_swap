@@ -6,13 +6,13 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 14:45:26 by gbertin           #+#    #+#             */
-/*   Updated: 2021/12/23 17:36:35 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/18 15:25:54 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-elem_list	*ft_islast(elem_list *lst)
+t_elem_list	*ft_islast(t_elem_list *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -25,49 +25,47 @@ elem_list	*ft_islast(elem_list *lst)
 	return (lst);
 }
 
-void	ft_addstart(t_list *liste, int nvNombre, char pile)
+int	ft_addstart(t_list *liste, int nvNombre, char pile)
 {
-	elem_list *nvElement;
+	t_elem_list	*nv_element;
 
-	nvElement = malloc(sizeof(*nvElement));
-	nvElement->nombre = nvNombre;
+	nv_element = malloc(sizeof(t_elem_list));
+	if (!nv_element)
+		return (0);
+	nv_element->nombre = nvNombre;
+	nv_element->next = NULL;
 	if (pile == 'A')
 	{
-		nvElement->next = liste->firstA;
-		liste->firstA = nvElement;
+		nv_element->next = liste->first_a;
+		liste->first_a = nv_element;
 	}
 	if (pile == 'B')
 	{
-		nvElement->next = liste->firstB;
-		liste->firstB = nvElement;
+		nv_element->next = liste->first_b;
+		liste->first_b = nv_element;
 	}
+	return (1);
 }
 
-void	ft_addend(t_list *liste, int nvNombre, char pile)
+int	ft_addend(t_list *liste, int nvNombre, char pile)
 {
-	elem_list	*nvElement;
-	elem_list	*lastElement;
+	t_elem_list	*nv_element;
+	t_elem_list	*last_element;
 
-	nvElement = malloc(sizeof(*nvElement));
-	nvElement->nombre = nvNombre;
+	nv_element = malloc(sizeof(t_elem_list));
+	if (!nv_element)
+		return (0);
+	nv_element->nombre = nvNombre;
+	nv_element->next = NULL;
 	if (pile == 'A')
 	{
-		lastElement = ft_islast(liste->firstA);
-		lastElement->next = nvElement;
+		last_element = ft_islast(liste->first_a);
+		last_element->next = nv_element;
 	}
 	if (pile == 'B')
 	{
-		lastElement = ft_islast(liste->firstB);
-		lastElement->next = nvElement;
+		last_element = ft_islast(liste->first_b);
+		last_element->next = nv_element;
 	}
+	return (1);
 }
-
-// void	ft_suppstart(t_list *liste, char pile)
-// {
-
-// }
-
-// void	ft_suppend(t_list *liste, char pile)
-// {
-
-// }

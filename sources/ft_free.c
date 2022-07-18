@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 12:01:04 by gbertin           #+#    #+#             */
-/*   Updated: 2022/06/04 12:44:31 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/18 16:10:33 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,41 @@
 
 void    ft_free_struct(t_list *liste)
 {
-    elem_list   *temp;
-    elem_list   *v;
+    if (liste->first_a)
+        ft_free_elem(liste->first_a);
+    if (liste->first_b)
+        ft_free_elem(liste->first_b);
+    if (liste)
+        free(liste);
+}
 
-    v = ft_memset(&v, 0, sizeof(elem_list));
-    temp = liste->firstA;
-    while (temp)
+void ft_free_elem(t_elem_list *elem)
+{
+    t_elem_list   *temp;
+
+    while (elem)
     {
-        v = temp;
-        printf("v : %d\n temp : %d \n", v->nombre, temp->nombre);
-        free(v);
-        temp = temp->next;
+        temp = elem;
+        elem = elem->next;
+        free(temp);
     }
+}
+
+void ft_free_split(char **split)
+{
+    int i;
+
+    i = 0;
+    while (split[i])
+    {
+        free(split[i]);
+        i++;
+    }
+    free(split);
+}
+
+void ft_free_during_filling(t_list *liste)
+{
+    ft_free_elem(liste->first_a);
+    free(liste);
 }

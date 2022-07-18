@@ -14,14 +14,14 @@
 
 void	ft_swap_a(t_list *liste)
 {
-	elem_list	*elem_first;
-	elem_list	*elem_second;
+	t_elem_list	*elem_first;
+	t_elem_list	*elem_second;
 
-	elem_first = liste->firstA;
+	elem_first = liste->first_a;
 	elem_second = elem_first->next;
 	if (elem_first && elem_second)
 	{
-		liste->firstA = elem_second;
+		liste->first_a = elem_second;
 		elem_first->next = elem_second->next;
 		elem_second->next = elem_first;
 	}
@@ -29,14 +29,14 @@ void	ft_swap_a(t_list *liste)
 
 void	ft_swap_b(t_list *liste)
 {
-	elem_list	*elem_first;
-	elem_list	*elem_second;
+	t_elem_list	*elem_first;
+	t_elem_list	*elem_second;
 
-	elem_first = liste->firstB;
+	elem_first = liste->first_b;
 	elem_second = elem_first->next;
 	if (elem_first && elem_second)
 	{
-		liste->firstB = elem_second;
+		liste->first_b = elem_second;
 		elem_first->next = elem_second->next;
 		elem_second->next = elem_first;
 	}

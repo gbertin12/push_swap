@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 10:57:08 by gbertin           #+#    #+#             */
-/*   Updated: 2022/06/04 12:26:53 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/18 14:30:08 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,38 @@
 
 void	ft_push_a(t_list *liste)
 {
-	elem_list	*elem_firstB;
-	elem_list	*elem_firstA;
+	t_elem_list	*elem_first_b;
+	t_elem_list	*elem_first_a;
 
-	elem_firstA = liste->firstA;
-	elem_firstB = liste->firstB;
-	if (elem_firstB)
+	elem_first_a = liste->first_a;
+	elem_first_b = liste->first_b;
+	if (elem_first_b)
 	{
-		liste->firstA = elem_firstB;
-		if (elem_firstB->next)
-			liste->firstB = elem_firstB->next;
+		liste->first_a = elem_first_b;
+		if (elem_first_b->next)
+			liste->first_b = elem_first_b->next;
 		else
-			liste->firstB = NULL;
-		elem_firstB->next = elem_firstA;
+			liste->first_b = NULL;
+		elem_first_b->next = elem_first_a;
 	}
 	ft_putstr_fd("pa\n", 1);
 }
 
 void	ft_push_b(t_list *liste)
 {
-	elem_list	*elem_firstB;
-	elem_list	*elem_firstA;
+	t_elem_list	*elem_first_b;
+	t_elem_list	*elem_first_a;
 
-	elem_firstA = liste->firstA;
-	elem_firstB = liste->firstB;
-	if (elem_firstA)
+	elem_first_a = liste->first_a;
+	elem_first_b = liste->first_b;
+	if (elem_first_a)
 	{
-		liste->firstB = elem_firstA;
-		if (elem_firstA->next)
-			liste->firstA = elem_firstA->next;
+		liste->first_b = elem_first_a;
+		if (elem_first_a->next)
+			liste->first_a = elem_first_a->next;
 		else
-			liste->firstA = NULL;
-		elem_firstA->next = elem_firstB;
+			liste->first_a = NULL;
+		elem_first_a->next = elem_first_b;
 	}
 	ft_putstr_fd("pb\n", 1);
 }

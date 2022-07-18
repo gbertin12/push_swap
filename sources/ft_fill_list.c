@@ -6,13 +6,13 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 17:42:49 by gbertin           #+#    #+#             */
-/*   Updated: 2022/01/30 11:26:59 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/18 16:12:07 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		ft_checksplit(char **split)
+int	ft_checksplit(char **split)
 {
 	int		i;
 	int		y;
@@ -32,7 +32,7 @@ int		ft_checksplit(char **split)
 	return (1);
 }
 
-int		ft_checkargv(char *argv)
+int	ft_checkargv(char *argv)
 {
 	int	i;
 
@@ -46,15 +46,16 @@ int		ft_checkargv(char *argv)
 	return (1);
 }
 
-t_list  *ft_fill_by_split(char **split)
+t_list	*ft_fill_by_split(char **split)
 {
-	t_list  *liste;
+	t_list	*liste;
 	int		i;
 
 	i = 0;
 	if (!ft_checksplit(split))
 	{
 		write(2, "Entrée incorrect\n", 19);
+		ft_free_split(split);
 		return (NULL);
 	}
 	liste = ft_initlst(ft_atoi(split[i]));
@@ -64,18 +65,19 @@ t_list  *ft_fill_by_split(char **split)
 		ft_addend(liste, ft_atoi(split[i]), 'A');
 		i++;
 	}
-	return (liste);	
+	ft_free_split(split);
+	return (liste);
 }
 
 t_list	*ft_fill(char **argv)
 {
 	t_list	*liste;
 	int		i;
-	
+
 	i = 1;
 	if (ft_checkargv(argv[i]))
-		liste = ft_initlst(ft_atoi(argv[i])); // retouner un message d'erreur
-	else 
+		liste = ft_initlst(ft_atoi(argv[i]));
+	else
 		return (0);
 	i++;
 	while (argv[i])
@@ -84,6 +86,7 @@ t_list	*ft_fill(char **argv)
 			ft_addend(liste, ft_atoi(argv[i]), 'A');
 		else
 		{
+			ft_free_during_filling(liste);
 			write(2, "Entrée incorrect\n", 19);
 			return (NULL);
 		}
@@ -94,15 +97,15 @@ t_list	*ft_fill(char **argv)
 
 t_list	*ft_fill_lst(int argc, char **argv)
 {
-	t_list *liste;
-	
+	t_list	*liste;
+
 	if (argc == 2)
 	{
 		liste = ft_fill_by_split(ft_split(argv[1], ' '));
 		if (liste == NULL)
 			return (0);
 	}
-	else 
+	else
 	{
 		liste = ft_fill(argv);
 		if (liste == NULL)

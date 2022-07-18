@@ -6,11 +6,11 @@
 #    By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/04 10:51:34 by gbertin           #+#    #+#              #
-#    Updated: 2022/06/04 12:14:30 by gbertin          ###   ########.fr        #
+#    Updated: 2022/07/18 16:46:28 by gbertin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pushswap
+NAME = push_swap
 CC = gcc
 FLAGS =	-Wall -Wextra -Werror
 RM = rm -f

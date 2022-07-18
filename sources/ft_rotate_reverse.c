@@ -6,15 +6,15 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/24 11:39:09 by gbertin           #+#    #+#             */
-/*   Updated: 2021/12/24 14:18:30 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/18 14:37:46 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-elem_list	*ft_isbefore_last(elem_list *liste)
+t_elem_list	*ft_isbefore_last(t_elem_list *liste)
 {
-	elem_list *elem_next;
+	t_elem_list	*elem_next;
 
 	if (!liste)
 		return (NULL);
@@ -30,36 +30,38 @@ elem_list	*ft_isbefore_last(elem_list *liste)
 
 void	ft_rotate_reverse_a(t_list *liste)
 {
-	elem_list	*elem_firstA;
-	elem_list	*elem_lastA;
-	elem_list	*elem_before_last;
+	t_elem_list	*elem_first_a;
+	t_elem_list	*elem_last_a;
+	t_elem_list	*elem_before_last;
 
-	elem_firstA = liste->firstA;
-	elem_lastA = ft_islast(liste->firstA);
-	elem_before_last = ft_isbefore_last(liste->firstA);
-	if (elem_firstA->next)
+	elem_first_a = liste->first_a;
+	elem_last_a = ft_islast(liste->first_a);
+	elem_before_last = ft_isbefore_last(liste->first_a);
+	if (elem_first_a->next)
 	{
-		liste->firstA = elem_lastA;
-		elem_lastA->next = elem_firstA;
+		liste->first_a = elem_last_a;
+		elem_last_a->next = elem_first_a;
 		elem_before_last->next = NULL;
 	}
+	ft_putstr_fd("rra\n", 1);
 }
 
 void	ft_rotate_reverse_b(t_list *liste)
 {
-	elem_list	*elem_firstB;
-	elem_list	*elem_lastB;
-	elem_list	*elem_before_last;
+	t_elem_list	*elem_first_b;
+	t_elem_list	*elem_last_b;
+	t_elem_list	*elem_before_last;
 
-	elem_firstB = liste->firstB;
-	elem_lastB = ft_islast(liste->firstB);
-	elem_before_last = ft_isbefore_last(liste->firstB);
-	if (elem_firstB->next)
+	elem_first_b = liste->first_b;
+	elem_last_b = ft_islast(liste->first_b);
+	elem_before_last = ft_isbefore_last(liste->first_b);
+	if (elem_first_b->next)
 	{
-		liste->firstB = elem_lastB;
-		elem_lastB->next = elem_firstB;
+		liste->first_b = elem_last_b;
+		elem_last_b->next = elem_first_b;
 		elem_before_last->next = NULL;
 	}
+	ft_putstr_fd("rrb\n", 1);
 }
 
 void	ft_rotate_reverse_ab(t_list *liste)

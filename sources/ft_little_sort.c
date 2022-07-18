@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:48:40 by gbertin           #+#    #+#             */
-/*   Updated: 2022/07/18 11:00:59 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/18 14:37:09 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 t_list	*ft_little_sort(t_list *liste)
 {
-	if (ft_count_size(liste->firstA) == 1)
+	if (ft_count_size(liste->first_a) == 1)
 		return (liste);
-	else if (ft_count_size(liste->firstA) == 2)
+	else if (ft_count_size(liste->first_a) == 2)
 	{
-		if (liste->firstA->nombre > liste->firstA->next->nombre)
+		if (liste->first_a->nombre > liste->first_a->next->nombre)
 			ft_rotate_a(liste);
 		return (liste);
 	}
-	else if (ft_count_size(liste->firstA) == 3)
+	else if (ft_count_size(liste->first_a) == 3)
 		ft_sort_three(liste);
 	else
 		ft_sort_five(liste);
@@ -31,34 +31,50 @@ t_list	*ft_little_sort(t_list *liste)
 
 t_list	*ft_sort_three(t_list *liste)
 {
-	elem_list *first;
-	elem_list *last;
-	elem_list *middle;
+	t_elem_list	*first;
+	t_elem_list	*last;
+	t_elem_list	*middle;
 
-	first = liste->firstA;
+	first = liste->first_a;
 	middle = first->next;
 	last = middle->next;
-	if (ft_is_max(first->nombre, first) && ft_is_min(middle->nombre, first)) // 3, 1, 2
+	if (ft_is_max(first->nombre, first) && ft_is_min(middle->nombre, first))
 		ft_rotate_a(liste);
-	else if (ft_is_max(middle->nombre, first) && ft_is_min(last->nombre, first)) // 2, 3, 1
+	if (ft_is_max(middle->nombre, first) && ft_is_min(last->nombre, first))
 		ft_rotate_reverse_a(liste);
-	else if (ft_is_max(middle->nombre, first) && ft_is_min(first->nombre, first)) // 1, 3, 2
+	if (ft_is_max(middle->nombre, first) && ft_is_min(first->nombre, first))
 	{
 		ft_push_b(liste);
 		ft_rotate_a(liste);
 		ft_push_a(liste);
 	}
-	else if (ft_is_max(first->nombre, first) && ft_is_min(last->nombre, first)) //3, 2, 1
+	if (ft_is_max(first->nombre, first) && ft_is_min(last->nombre, first))
 	{
-		ft_swap_a(liste);
 		ft_rotate_a(liste);
+		ft_swap_a(liste);
 	}
-	else if (ft_is_max(last->nombre, first) && ft_is_min(middle->nombre))// 2, 1, 3
+	if (ft_is_max(last->nombre, first) && ft_is_min(middle->nombre, first))
 		ft_swap_a(liste);
 	return (liste);
 }
 
-t_list	*ft_sort_five(t_list *liste)
+t_list	*ft_sort_five(t_list *lst)
 {
-	return (liste);
+	while (!ft_is_sorted(lst))
+	{
+		if (ft_count_size(lst->first_a) > 3)
+		{
+			if (ft_is_min(lst->first_a->nombre, lst->first_a))
+				ft_push_b(lst);
+			if (ft_search_min(lst->first_a) >= ft_count_size(lst->first_a) / 2)
+				ft_rotate_reverse_a(lst);
+			else
+				ft_rotate_a(lst);
+		}
+		else
+			ft_sort_three(lst);
+	}
+	ft_push_a(lst);
+	ft_push_a(lst);
+	return (lst);
 }

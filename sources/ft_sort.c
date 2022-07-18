@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 01:04:58 by gbertin           #+#    #+#             */
-/*   Updated: 2022/06/04 12:40:58 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/18 16:41:31 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,38 @@
 
 t_list	*ft_sort(t_list *liste)
 {
-	int i;
-	int y;
-	int num;
-	int size;
-
+	int	i;
+	int	y;
+	int	num;
+	int	size;
 
 	i = 0;
-	size = ft_count_size(liste->firstA);
+	size = ft_count_size(liste->first_a);
 	while (!ft_is_sorted(liste))
 	{
 		y = 0;
 		while (y < size)
 		{
-			num = liste->firstA->nombre;
-			if (((num >> i)&1) == 1)
+			num = liste->first_a->nombre;
+			if (((num >> i) & 1) == 1)
 				ft_rotate_a(liste);
 			else
 				ft_push_b(liste);
 			y++;
 		}
-		while (liste->firstB)
+		while (liste->first_b)
 			ft_push_a(liste);
 		i++;
 	}
 	return (liste);
 }
 
-int		ft_is_sorted(t_list *liste) // good
+int	ft_is_sorted(t_list *liste)
 {
-	elem_list *elem;
-	elem_list *elem_sup;
+	t_elem_list	*elem;
+	t_elem_list	*elem_sup;
 
-	elem = liste->firstA;
+	elem = liste->first_a;
 	elem_sup = elem->next;
 	while (elem_sup)
 	{
@@ -58,7 +57,7 @@ int		ft_is_sorted(t_list *liste) // good
 	return (1);
 }
 
-int		ft_count_size(elem_list *elem) // good
+int	ft_count_size(t_elem_list *elem)
 {
 	int			i;
 
