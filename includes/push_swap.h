@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:04:29 by gbertin           #+#    #+#             */
-/*   Updated: 2022/07/18 16:09:09 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/20 16:52:26 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct t_elem_list
 {
 	int					nombre;
+	int					index;
 	struct t_elem_list	*next;
 }			t_elem_list;
 
@@ -47,10 +48,19 @@ int			ft_count_size(t_elem_list *elem);
 int			ft_is_max(int value, t_elem_list *liste);
 int			ft_is_min(int value, t_elem_list *liste);
 int			ft_search_min(t_elem_list *liste);
+int			ft_max_int(t_elem_list *elem);
+void		ft_big_sort(t_list *liste);
+int			ft_find_max_bits(int max_num);
+void		ft_push_all_b(t_list *liste);
 
 t_list		*ft_little_sort(t_list *liste);
 t_list		*ft_sort_five(t_list *liste);
 t_list		*ft_sort_three(t_list *liste);
+
+void		ft_create_index(t_list *liste);
+void		ft_add_index(int index, t_list *liste);
+int			ft_search_undefine_index(t_elem_list *elem);
+int			ft_check_double(t_list *liste);
 
 void		ft_swap_a(t_list *liste);
 void		ft_swap_b(t_list *liste);

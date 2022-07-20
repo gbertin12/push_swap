@@ -6,7 +6,7 @@
 #    By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/04 10:51:34 by gbertin           #+#    #+#              #
-#    Updated: 2022/07/18 16:46:28 by gbertin          ###   ########.fr        #
+#    Updated: 2022/07/20 14:52:43 by gbertin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,13 @@ SRCS = 	push_swap.c \
 		sources/ft_little_sort.c \
 		sources/ft_printlst.c \
 		sources/ft_push.c \
+		sources/ft_big_sort.c \
 		sources/ft_rotate_reverse.c \
 		sources/ft_rotate.c \
 		sources/ft_search.c \
 		sources/ft_sort.c \
 		sources/ft_free.c \
+		sources/ft_create_index.c \
 		sources/ft_swap.c
 
 HEAD = includes/push_swap.h

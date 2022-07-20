@@ -25,6 +25,7 @@ void	ft_swap_a(t_list *liste)
 		elem_first->next = elem_second->next;
 		elem_second->next = elem_first;
 	}
+	ft_putstr_fd("sa\n", 1);
 }
 
 void	ft_swap_b(t_list *liste)
@@ -40,6 +41,7 @@ void	ft_swap_b(t_list *liste)
 		elem_first->next = elem_second->next;
 		elem_second->next = elem_first;
 	}
+	ft_putstr_fd("sb\n", 1);
 }
 
 void	ft_swap_ab(t_list *liste)

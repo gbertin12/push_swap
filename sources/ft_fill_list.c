@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 17:42:49 by gbertin           #+#    #+#             */
-/*   Updated: 2022/07/18 16:12:07 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/20 16:52:45 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ int	ft_checksplit(char **split)
 		y = 0;
 		while (split[i][y])
 		{
+			
 			if (!ft_isdigit(split[i][y]))
-				return (0);
+				if (y != 0 && split[i][0] != '-')
+					return (0);
 			y++;
 		}
 		i++;
@@ -54,7 +56,7 @@ t_list	*ft_fill_by_split(char **split)
 	i = 0;
 	if (!ft_checksplit(split))
 	{
-		write(2, "Entrée incorrect\n", 19);
+		write(2, "Error\n", 6);
 		ft_free_split(split);
 		return (NULL);
 	}
@@ -87,7 +89,7 @@ t_list	*ft_fill(char **argv)
 		else
 		{
 			ft_free_during_filling(liste);
-			write(2, "Entrée incorrect\n", 19);
+			write(2, "Error\n", 6);
 			return (NULL);
 		}
 		i++;

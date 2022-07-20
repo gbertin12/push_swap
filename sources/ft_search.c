@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 15:09:45 by gbertin           #+#    #+#             */
-/*   Updated: 2022/07/18 15:02:29 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/20 16:55:26 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,38 @@ int	ft_search_min(t_elem_list *liste)
 		liste = liste->next;
 	}
 	return (place);
+}
+
+int	ft_max_int(t_elem_list *elem)
+{
+	int max;
+	
+	max = 0;
+	while (elem)
+	{
+		if (elem->nombre > max)
+			max = elem->nombre;
+		elem = elem->next;
+	}
+	return (max);
+}
+
+int	ft_check_double(t_list *liste)
+{
+	t_elem_list *elem;
+	t_elem_list *check_elem;
+
+	elem = liste->first_a;
+	while (elem)
+	{
+		check_elem = liste->first_a;
+		while (check_elem)
+		{
+			if (elem->nombre == check_elem->nombre)
+				return (1);
+			check_elem = check_elem->next;
+		}
+		elem = elem->next;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 14:45:26 by gbertin           #+#    #+#             */
-/*   Updated: 2022/07/18 15:25:54 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/20 15:05:41 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_addstart(t_list *liste, int nvNombre, char pile)
 	if (!nv_element)
 		return (0);
 	nv_element->nombre = nvNombre;
+	nv_element->index = 0;
 	nv_element->next = NULL;
 	if (pile == 'A')
 	{
@@ -56,6 +57,7 @@ int	ft_addend(t_list *liste, int nvNombre, char pile)
 	if (!nv_element)
 		return (0);
 	nv_element->nombre = nvNombre;
+	nv_element->index = 0;
 	nv_element->next = NULL;
 	if (pile == 'A')
 	{

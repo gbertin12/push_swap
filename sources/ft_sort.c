@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 01:04:58 by gbertin           #+#    #+#             */
-/*   Updated: 2022/07/18 16:41:31 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/20 15:02:06 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_list	*ft_sort(t_list *liste)
 		y = 0;
 		while (y < size)
 		{
-			num = liste->first_a->nombre;
+			num = liste->first_a->index;
 			if (((num >> i) & 1) == 1)
 				ft_rotate_a(liste);
 			else
@@ -49,7 +49,7 @@ int	ft_is_sorted(t_list *liste)
 	elem_sup = elem->next;
 	while (elem_sup)
 	{
-		if (elem->nombre > elem_sup->nombre)
+		if (elem->index > elem_sup->index)
 			return (0);
 		elem = elem_sup;
 		elem_sup = elem->next;

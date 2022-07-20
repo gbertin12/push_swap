@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:48:40 by gbertin           #+#    #+#             */
-/*   Updated: 2022/07/18 14:37:09 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/07/20 12:15:34 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_list	*ft_sort_five(t_list *lst)
 		{
 			if (ft_is_min(lst->first_a->nombre, lst->first_a))
 				ft_push_b(lst);
-			if (ft_search_min(lst->first_a) >= ft_count_size(lst->first_a) / 2)
+			if (ft_search_min(lst->first_a) > ft_count_size(lst->first_a) / 2)
 				ft_rotate_reverse_a(lst);
 			else
 				ft_rotate_a(lst);
@@ -74,7 +74,7 @@ t_list	*ft_sort_five(t_list *lst)
 		else
 			ft_sort_three(lst);
 	}
-	ft_push_a(lst);
-	ft_push_a(lst);
+	while (lst->first_b)
+		ft_push_a(lst);
 	return (lst);
 }
