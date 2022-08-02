@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 17:42:49 by gbertin           #+#    #+#             */
-/*   Updated: 2022/08/02 09:41:41 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/08/02 15:02:50 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,6 @@ int	ft_checksplit(char **split)
 	return (1);
 }
 
-int	ft_checkargv(char *argv)
-{
-	int	i;
-
-	i = 0;
-	if (argv[i] == 0)
-		return (0);
-	if (argv[i] == '-')
-		i++;
-	if (!ft_check_max_int(argv))
-		return (0);
-	while (argv[i])
-	{
-		if (!ft_isdigit(argv[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 t_list	*ft_fill_by_split(t_list *liste, char **split, int init)
 {
 	int		i;
@@ -64,7 +44,11 @@ t_list	*ft_fill_by_split(t_list *liste, char **split, int init)
 	if (split[0] == NULL)
 		return (ft_msg_err_fill_by_split(split));
 	if (!ft_checksplit(split))
+	{
+		if (init != 1)
+			ft_free_struct(liste);
 		return (ft_msg_err_fill_by_split(split));
+	}
 	if (init == 1)
 	{
 		if (!ft_check_max_int(split[i]))
@@ -72,40 +56,24 @@ t_list	*ft_fill_by_split(t_list *liste, char **split, int init)
 		liste = ft_initlst(ft_atoi(split[i]));
 		i++;
 	}
+	if (ft_browse_split(split, liste, i))
+	{
+		ft_free_split(split);
+		return (liste);
+	}
+	return (0);
+}
+
+t_list	*ft_browse_split(char **split, t_list *liste, int i)
+{
 	while (split[i])
 	{
 		if (!ft_check_max_int(split[i]))
-			return (ft_msg_err_fill_by_split(split));
-		ft_addend(liste, ft_atoi(split[i]), 'A');
-		i++;
-	}
-	return (liste);
-}
-
-t_list	*ft_fill(char **argv)
-{
-	t_list	*liste;
-	int		i;
-
-	i = 1;
-	if (ft_checkargv(argv[i]))
-		liste = ft_initlst(ft_atoi(argv[i]));
-	else
-	{
-		write(STDERR_FILENO, "Error\n", 6);
-		return (0);
-	}
-	i++;
-	while (argv[i])
-	{
-		if (ft_checkargv(argv[i]))
-			ft_addend(liste, ft_atoi(argv[i]), 'A');
-		else
 		{
-			ft_free_during_filling(liste);
-			write(STDERR_FILENO, "Error\n", 6);
-			return (NULL);
+			ft_free_struct(liste);
+			return (ft_msg_err_fill_by_split(split));
 		}
+		ft_addend(liste, ft_atoi(split[i]), 'A');
 		i++;
 	}
 	return (liste);
@@ -121,30 +89,12 @@ t_list	*ft_fill_lst(int argc, char **argv)
 	while (i < argc)
 	{
 		split = ft_split(argv[i], ' ');
+		if (split[0] == NULL)
+			return (ft_err_split_zero(i, split, argc, liste));
 		liste = ft_fill_by_split(liste, split, i);
 		if (!liste)
 			return (0);
-		ft_free_split(split);
 		i++;
 	}
 	return (liste);
 }
-
-// t_list	*ft_fill_lst(int argc, char **argv)
-// {
-// 	t_list	*liste;
-
-// 	if (argc == 2)
-// 	{
-// 		liste = ft_fill_by_split(ft_split(argv[1], ' '));
-// 		if (liste == NULL)
-// 			return (0);
-// 	}
-// 	else
-// 	{
-// 		liste = ft_fill(argv);
-// 		if (liste == NULL)
-// 			return (0);
-// 	}
-// 	return (liste);
-// }

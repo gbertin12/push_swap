@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 08:12:46 by gbertin           #+#    #+#             */
-/*   Updated: 2022/07/21 10:38:47 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/08/02 15:03:57 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,16 @@ t_list	*ft_msg_err_during_filling_by_split(char **split, t_list *liste)
 	ft_free_split(split);
 	ft_free_during_filling(liste);
 	return (NULL);
+}
+
+t_list	*ft_err_split_zero(int i, char **split, int argc, t_list *liste)
+{
+	if (i >= 2)
+		ft_free_struct(liste);
+	if (split[0] == NULL && argc == 2)
+	{
+		ft_free_split(split);
+		return (NULL);
+	}
+	return (ft_msg_err_fill_by_split(split));
 }
