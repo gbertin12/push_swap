@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 17:42:49 by gbertin           #+#    #+#             */
-/*   Updated: 2022/07/27 10:00:02 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/08/02 09:41:41 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ int	ft_checkargv(char *argv)
 	return (1);
 }
 
-t_list	*ft_fill_by_split(char **split)
+t_list	*ft_fill_by_split(t_list *liste, char **split, int init)
 {
-	t_list	*liste;
 	int		i;
 
 	i = 0;
@@ -66,10 +65,13 @@ t_list	*ft_fill_by_split(char **split)
 		return (ft_msg_err_fill_by_split(split));
 	if (!ft_checksplit(split))
 		return (ft_msg_err_fill_by_split(split));
-	if (!ft_check_max_int(split[i]))
-		return (ft_msg_err_fill_by_split(split));
-	liste = ft_initlst(ft_atoi(split[i]));
-	i++;
+	if (init == 1)
+	{
+		if (!ft_check_max_int(split[i]))
+			return (ft_msg_err_fill_by_split(split));
+		liste = ft_initlst(ft_atoi(split[i]));
+		i++;
+	}
 	while (split[i])
 	{
 		if (!ft_check_max_int(split[i]))
@@ -77,7 +79,6 @@ t_list	*ft_fill_by_split(char **split)
 		ft_addend(liste, ft_atoi(split[i]), 'A');
 		i++;
 	}
-	ft_free_split(split);
 	return (liste);
 }
 
@@ -113,18 +114,37 @@ t_list	*ft_fill(char **argv)
 t_list	*ft_fill_lst(int argc, char **argv)
 {
 	t_list	*liste;
+	char	**split;
+	int		i;
 
-	if (argc == 2)
+	i = 1;
+	while (i < argc)
 	{
-		liste = ft_fill_by_split(ft_split(argv[1], ' '));
-		if (liste == NULL)
+		split = ft_split(argv[i], ' ');
+		liste = ft_fill_by_split(liste, split, i);
+		if (!liste)
 			return (0);
-	}
-	else
-	{
-		liste = ft_fill(argv);
-		if (liste == NULL)
-			return (0);
+		ft_free_split(split);
+		i++;
 	}
 	return (liste);
 }
+
+// t_list	*ft_fill_lst(int argc, char **argv)
+// {
+// 	t_list	*liste;
+
+// 	if (argc == 2)
+// 	{
+// 		liste = ft_fill_by_split(ft_split(argv[1], ' '));
+// 		if (liste == NULL)
+// 			return (0);
+// 	}
+// 	else
+// 	{
+// 		liste = ft_fill(argv);
+// 		if (liste == NULL)
+// 			return (0);
+// 	}
+// 	return (liste);
+// }

@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:04:29 by gbertin           #+#    #+#             */
-/*   Updated: 2022/07/27 09:45:28 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/08/02 09:25:06 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int			ft_addstart(t_list *liste, int nvNombre, char pile);
 int			ft_addend(t_list *liste, int nvNombre, char pile);
 
 t_list		*ft_fill_lst(int argc, char **argv);
-t_list		*ft_fill_by_split(char **split);
+t_list		*ft_fill_by_split(t_list *liste, char **split, int init);
 t_list		*ft_fill(char **argv);
 
 t_list		*ft_sort(t_list *liste);
@@ -82,5 +82,6 @@ void		ft_free_during_filling(t_list *liste);
 t_list		*ft_msg_err_fill_by_split(char **split);
 t_list		*ft_msg_err_during_filling_by_split(char **split, t_list *liste);
 int			ft_check_max_int(char *nbr);
+int			ft_check_int(int i, char *nbr, char *max);
 
 #endif

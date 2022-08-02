@@ -6,7 +6,7 @@
 /*   By: gbertin <gbertin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:23:17 by gbertin           #+#    #+#             */
-/*   Updated: 2022/07/27 10:09:41 by gbertin          ###   ########.fr       */
+/*   Updated: 2022/08/02 08:52:35 by gbertin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 		{
 			if (ft_check_double(liste))
 				write(STDERR_FILENO, "Error\n", 6);
-			ft_free_struct(liste);
 		}
 		else
 		{
@@ -34,8 +33,8 @@ int	main(int argc, char **argv)
 				ft_little_sort(liste);
 			else
 				ft_sort(liste);
-			ft_free_struct(liste);
 		}
+		ft_free_struct(liste);
 	}
 	return (0);
 }
